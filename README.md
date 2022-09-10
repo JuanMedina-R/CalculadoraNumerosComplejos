@@ -1,7 +1,7 @@
 # Calculadora de Números Complejos
 
-Esta libreria es una calculadora de números complejos con la que podrá realizar las siguientes operaciones:
-* Suma.
+Esta libreria es una calculadora de números, vectores y matrices complejas con la que podrá realizar las siguientes operaciones:
+* Suma
 * Resta.
 * Multiplicacion.
 * Division.
@@ -9,6 +9,9 @@ Esta libreria es una calculadora de números complejos con la que podrá realiza
 * Hallar el conjugado.
 * Transformar números complejos de coordenadas cartesianas a polares y también de polares a cartesianas.
 * Hallar la fase.
+* Conocer si una matriz es hermitiana y/o unitaria.
+* Hallar La distancia entre vectores.
+* Producto Interno y Producto Tensor.
 
 ## Inicialmente
 
@@ -28,11 +31,12 @@ en esta calculadora.
 
 ## Construido con
 
-* Pycharm, Python 3.10 64-bit
+* Pycharm (*editor de texto*)
+* Python 3.10 64-bit
 
-## Version 1
+## Version 3
 
-Actualmente (16/08/2022) es la primera entrega de esta libreria.
+Actualmente (09/089/2022) es la tercera versión de esta libreria.
 
 ## Autores
 
