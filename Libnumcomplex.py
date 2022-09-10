@@ -1,4 +1,5 @@
 import math
+import numpy as np
 from fractions import Fraction
 
 
@@ -7,6 +8,8 @@ from fractions import Fraction
 # Funciones para realizar operaciones de números complejos
 
 # Funciún suma: realiza sumas de números complejos
+
+
 def suma(a, b):
     real = a[0] + b[0]
     img = a[1] + b[1]
@@ -201,6 +204,8 @@ def normavector(a):
         for j in range(len(a[0])):
             rt += a[i][j][0] ** 2 + a[i][j][1] ** 2
     return math.sqrt(rt)
+
+
 #
 #
 def distanciavectores(a, b):
@@ -210,22 +215,29 @@ def distanciavectores(a, b):
     print(vector)
     return vector
 
+
 #
 #
-def matrizunitaria (a,b):
+def matrizunitaria(a):
+    t = adjuntamatriz(a)
+    u = multmatrices(t, a)
+    Identidad = np.identity(4)
+    if Identidad == u:
+        print("La matriz es unitaria")
+        return u
+    else:
+        print("La matriz no es unitaria")
+        return u
 
 
-
-
-def matrizhermitiana (a):
-    print(a)
+def matrizhermitiana(a):
     adj = adjuntamatriz(a)
-    print(adj)
     if adj == a:
         print("La matriz es hermitiana")
+        return adj
     else:
         print("La matriz no es hermitiana")
-
+        return adj
 
 
 
@@ -280,6 +292,6 @@ z = [
 # print(multmatrices(x, V3))
 # print(productointerno(V3, V4))
 # print(normavector(x))
-print(distanciavectores(V1, V2))
-# print(matrizhermitiana(z))
-
+# print(distanciavectores(V1, V2))
+print(matrizunitaria(z))
+print(matrizhermitiana(z))
