@@ -102,7 +102,8 @@ def sumavectores(a, b):
     if len(a) == len(b):
         vector = [[0 for i in range(1)] for j in range(len(a))]
         for i in range(len(a)):
-            vector[i] = suma(a[i], b[i])
+            for j in range(1):
+                vector[i][j] = suma(a[i][j], b[i][j])
         return vector
     else:
         print("Debido a que los vectores no tienen el mismo tamaño, no es posible realizar la operación")
@@ -112,7 +113,8 @@ def restavectores(a, b):
     if len(a) == len(b):
         vector = [[0 for i in range(1)] for j in range(len(a))]
         for i in range(len(a)):
-            vector[i] = resta(a[i], b[i])
+            for j in range(1):
+                vector[i][j] = resta(a[i][j], b[i][j])
         return vector
     else:
         print("Debido a que los vectores no tienen el mismo tamaño, no es posible realizar la operación")
@@ -121,14 +123,16 @@ def restavectores(a, b):
 def inversovector(a):
     vector = [[0 for i in range(1)] for j in range(len(a))]
     for i in range(len(a)):
-        vector[i] = inverso(a[i])
+        for j in range(1):
+            vector[i][j] = inverso(a[i][j])
     return vector
 
 
 def multescalarvector(c, a):
     vector = [[0 for i in range(1)] for j in range(len(a))]
     for i in range(len(a)):
-        vector[i] = multiplicacion(c, a[i])
+        for j in range(1):
+            vector[i][j] = multiplicacion(c, a[i][j])
     return vector
 
 
@@ -160,7 +164,7 @@ def multescalarmatriz(c, a):
 
 
 def traspuesta(a):
-    matriz = [[0 for i in range(len(a[0]))] for j in range(len(a))]
+    matriz = [[0 for i in range(len(a))] for j in range(len(a[0]))]
     for i in range(len(a)):
         for j in range(len(a[0])):
             matriz[i][j] = a[j][i]
@@ -202,7 +206,7 @@ def normavector(a):
     rt = 0
     for i in range(len(a)):
         for j in range(len(a[0])):
-            rt += a[i][j][0] ** 2 + a[i][j][1] ** 2
+            rt = a[i][j][0] ** 2 + a[i][j][1] ** 2
     return math.sqrt(rt)
 
 
@@ -240,7 +244,6 @@ def matrizhermitiana(a):
         return adj
 
 
-
 # Función printnumcomplejos: Escribe de una mejor manera el resultado de las operaciones de números complejos
 # def printnumcomplejos(c):
 # return print(str(round(c[0], 4)) + ' + ' + str(round(c[1], 4)) + 'i')
@@ -257,10 +260,14 @@ def matrizhermitiana(a):
 # polar(4, 3)
 # cartesiano(8.246211251235321, 1.3258176636680326)
 # fase(2, 5)
-V1 = [[1, 2], [2, 3], [3, 4], [4, 5]]
-V2 = [[2, 4], [4, 6], [8, 10], [12, 14]]
+V1 = [[[1, 2]], [[2, 3]], [[3, 4]], [[4, 5]]]
+V2 = [[[2, 4]], [[4, 6]], [[8, 10]], [[12, 14]]]
 V3 = [[[1, 2]], [[2, 3]], [[3, 4]]]
 V4 = [[[2, 3]], [[4, 1]], [[3, -4]]]
+V5 = [[[1, 2]], [[1, 2]], [[1, 2]]]
+V6 = [[[1, 2]],
+      [[1, 2]],
+      [[1, 2]]]
 c = (2, -1)
 # print(sumavectores(V1, V2))
 # print(restavectores(V1, V2))
@@ -282,16 +289,17 @@ z = [
     [(1, -5), (2, -6), (3, 0)]
 ]
 
-# print(sumamatrices(x, y))
-# print(inversomatriz(x))
-# print(multescalarmatriz(c, y))
-# print(traspuesta(x))
+print(sumamatrices(x, y))
+print(inversomatriz(x))
+print(multescalarmatriz(c, y))
+print(traspuesta(x))
+# print(traspuesta(V1))
 # print(conjugadomatriz(y))
 # print(adjuntamatriz(x))
 # print(multmatrices(x, y))
-# print(multmatrices(x, V3))
+# print(multmatrices(x, V6))
 # print(productointerno(V3, V4))
 # print(normavector(x))
 # print(distanciavectores(V1, V2))
-print(matrizunitaria(z))
-print(matrizhermitiana(z))
+# print(matrizunitaria(z))
+# print(matrizhermitiana(z))
