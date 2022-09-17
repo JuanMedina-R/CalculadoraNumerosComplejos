@@ -109,6 +109,7 @@ def sumavectores(a, b):
         print("Debido a que los vectores no tienen el mismo tamaño, no es posible realizar la operación")
 
 
+# Función RestaVectores: realiza la resta de dos vectores
 def restavectores(a, b):
     if len(a) == len(b):
         vector = [[0 for i in range(1)] for j in range(len(a))]
@@ -120,6 +121,7 @@ def restavectores(a, b):
         print("Debido a que los vectores no tienen el mismo tamaño, no es posible realizar la operación")
 
 
+# Función InversoVectores: realiza el inverso aditivo de un vector
 def inversovector(a):
     vector = [[0 for i in range(1)] for j in range(len(a))]
     for i in range(len(a)):
@@ -128,6 +130,7 @@ def inversovector(a):
     return vector
 
 
+# Función MultEscalarVector: realiza la multiplicacion de un escalar por un vector
 def multescalarvector(c, a):
     vector = [[0 for i in range(1)] for j in range(len(a))]
     for i in range(len(a)):
@@ -136,6 +139,7 @@ def multescalarvector(c, a):
     return vector
 
 
+# Función SumaMatrices: realiza la suma de dos matrices
 def sumamatrices(a, b):
     if len(a) == len(b) and len(a[0]) == len(b[0]):
         matriz = [[0 for i in range(len(b[0]))] for j in range(len(a))]
@@ -147,6 +151,7 @@ def sumamatrices(a, b):
         print("Debido a que las matrices no tienen tamaños compatibles, no es posible realizar la operación")
 
 
+# Función InversoMatriz: realiza el inverso adivitivo de una matriz
 def inversomatriz(a):
     matriz = [[0 for i in range(len(a[0]))] for j in range(len(a))]
     for i in range(len(a)):
@@ -155,6 +160,7 @@ def inversomatriz(a):
     return matriz
 
 
+# Función MultEscalarMatriz: realiza la multiplicación de un escalar por una matriz
 def multescalarmatriz(c, a):
     matriz = [[0 for i in range(len(a[0]))] for j in range(len(a))]
     for i in range(len(a)):
@@ -163,14 +169,16 @@ def multescalarmatriz(c, a):
     return matriz
 
 
+# Función Traspuesta: realiza la traspuesta de una matriz o vector
 def traspuesta(a):
     matriz = [[0 for i in range(len(a))] for j in range(len(a[0]))]
     for i in range(len(a)):
         for j in range(len(a[0])):
-            matriz[i][j] = a[j][i]
+            matriz[j][i] = a[i][j]
     return matriz
 
 
+# Función ConjugadoMatriz: realiza el conjugado de una matriz o vector
 def conjugadomatriz(a):
     matriz = [[0 for i in range(len(a[0]))] for j in range(len(a))]
     for i in range(len(a)):
@@ -179,11 +187,13 @@ def conjugadomatriz(a):
     return matriz
 
 
+# Función AdjuntaMatriz: realiza la adjunta de una matriz
 def adjuntamatriz(a):
     matriz = conjugadomatriz(a[:])
     return traspuesta(matriz)
 
 
+# Función MulMatrices: realiza multiplicación de dos matrices o vectores
 def multmatrices(a, b):
     if len(a[0]) == len(b):
         matriz = [[[0, 0] for i in range(len(b[0]))] for j in range(len(a))]
@@ -196,37 +206,45 @@ def multmatrices(a, b):
         print("Debido a que las matrices no tienen tamaños compatibles, no es posible realizar la operación")
 
 
+# Función ProductoInterno: Realiza el producto interno entre dos matrices o vectores
 def productointerno(a, b):
-    t = adjuntamatriz(a)
-    vector = multmatrices(t, b)
-    return vector
+    rta = [0, 0]
+    adj = adjuntamatriz(a)
+    matriz = multmatrices(adj, b)
+    for i in range(len(matriz)):
+        for j in range(len(matriz[0])):
+            if i == j:
+                rta = suma(rta, matriz[i][j])
+            else:
+                rta = rta
+    return rta
 
 
+# Función Norma: Calcula la norma de una matriz o vector
 def normavector(a):
-    rt = 0
-    for i in range(len(a)):
-        for j in range(len(a[0])):
-            rt = a[i][j][0] ** 2 + a[i][j][1] ** 2
-    return math.sqrt(rt)
+    rt = productointerno(a, a)
+    return math.sqrt(rt[0])
 
 
-#
-#
-def distanciavectores(a, b):
+# Función Distancia: Calcula la distancia entre una matriz o vector
+def distancia(a, b):
     v = restavectores(a, b)
-    print(v)
-    vector = normavector(v)
-    print(vector)
-    return vector
+    rt = normavector(v)
+    return rt
 
 
-#
-#
+# Función MatrizUnitaria: Comprueba si una matriz es unitaria o no
 def matrizunitaria(a):
     t = adjuntamatriz(a)
     u = multmatrices(t, a)
-    Identidad = np.identity(4)
-    if Identidad == u:
+    I = [[[0, 0] for i in range(len(a[0]))] for j in range(len(a))]
+    for i in range(len(a)):
+        for j in range(len(a[0])):
+            if i == j:
+                I[i][j] = (1, 0)
+            else:
+                I[i][j] = (0, 0)
+    if I == u:
         print("La matriz es unitaria")
         return u
     else:
@@ -234,6 +252,7 @@ def matrizunitaria(a):
         return u
 
 
+# Función MatrizHermitiaa: Comprueba si una matriz es hermitiana o no
 def matrizhermitiana(a):
     adj = adjuntamatriz(a)
     if adj == a:
@@ -288,18 +307,22 @@ z = [
     [(3, -3), (3, 0), (2, 6)],
     [(1, -5), (2, -6), (3, 0)]
 ]
-
-print(sumamatrices(x, y))
-print(inversomatriz(x))
-print(multescalarmatriz(c, y))
-print(traspuesta(x))
-# print(traspuesta(V1))
+u = [
+    [[0, 1], [0, 0], [0, 0]],
+    [[0, 0], [0, 1], [0, 0]],
+    [[0, 0], [0, 0], [0, 1]]
+]
+# print(sumamatrices(x, y))
+# print(inversomatriz(x))
+# print(multescalarmatriz(c, y))
+# print(traspuesta(x))
+# # print(traspuesta(V1))
 # print(conjugadomatriz(y))
 # print(adjuntamatriz(x))
 # print(multmatrices(x, y))
 # print(multmatrices(x, V6))
 # print(productointerno(V3, V4))
 # print(normavector(x))
-# print(distanciavectores(V1, V2))
-# print(matrizunitaria(z))
+# print(distancia(V1, V2))
+# print(matrizunitaria(u))
 # print(matrizhermitiana(z))

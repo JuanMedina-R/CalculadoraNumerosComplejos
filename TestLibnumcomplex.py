@@ -38,13 +38,11 @@ class TestCplxOperations(unittest.TestCase):
         rt = [[(3, 6)], [(6, 9)], [(11, 14)], [(16, 19)]]
         self.assertEqual(lnc.sumavectores(V1, V2), rt)
 
-
     def test_restavector(self):
         V1 = [[[1, 2]], [[2, 3]], [[3, 4]], [[4, 5]]]
         V2 = [[[2, 4]], [[4, 6]], [[8, 10]], [[12, 14]]]
         rt = [[(-1, -2)], [(-2, -3)], [(-5, -6)], [(-8, -9)]]
         self.assertEqual(lnc.restavectores(V1, V2), rt)
-
 
     def test_inversovector(self):
         V = [[[1, 2]], [[2, 3]], [[3, 4]], [[4, 5]]]
@@ -142,6 +140,12 @@ class TestCplxOperations(unittest.TestCase):
         rt = [[(-12, 16)], [(-21, 48)], [(-5, 30)]]
         self.assertEqual(lnc.multmatrices(m, v), rt)
 
+    def test_productointerno(self):
+        V1 = [[[1, 2]], [[2, 3]], [[3, 4]]]
+        V2 = [[[2, 3]], [[4, 1]], [[3, -4]]]
+        rt = (12, -35)
+        self.assertEqual(lnc.productointerno(V1, V2), rt)
+
     def test_normavector(self):
         v = [
             [[1, 2], [2, 3], [1, 3]],
@@ -150,18 +154,22 @@ class TestCplxOperations(unittest.TestCase):
         ]
         self.assertEqual(lnc.normavector(v), 17.029386365926403)
 
+    def test_distancia(self):
+        V1 = [[[1, 2]], [[2, 3]], [[3, 4]], [[4, 5]]]
+        V2 = [[[2, 4]], [[4, 6]], [[8, 10]], [[12, 14]]]
+        self.assertEqual(lnc.distancia(V1, V2), 14.966629547095765)
+
     def test_unitaria(self):
-        m =[
-            [(5, 0), (3, 3), (1, 5)],
-            [(3, -3), (3, 0), (2, 6)],
-            [(1, -5), (2, -6), (3, 0)]
+        m = [
+            [[0, 1], [0, 0], [0, 0]],
+            [[0, 0], [0, 1], [0, 0]],
+            [[0, 0], [0, 0], [0, 1]]
         ]
-        rt = [[(69, 0), (56, 28), (-4, 64)], [(56, -28), (67, 0), (30, 48)], [(-4, -64), (30, -48), (75, 0)]]
+        rt = [[(1, 0), (0, 0), (0, 0)], [(0, 0), (1, 0), (0, 0)], [(0, 0), (0, 0), (1, 0)]]
         self.assertEqual(lnc.matrizunitaria(m), rt)
 
-
     def test_hermitiana(self):
-        m =[
+        m = [
             [(5, 0), (3, 3), (1, 5)],
             [(3, -3), (3, 0), (2, 6)],
             [(1, -5), (2, -6), (3, 0)]

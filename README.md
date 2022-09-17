@@ -34,9 +34,9 @@ en esta calculadora.
 * Pycharm (*editor de texto*)
 * Python 3.10 64-bit
 
-## Version 3
+## Version 4
 
-Actualmente (09/089/2022) es la tercera versión de esta libreria.
+Actualmente (16/09/2022) es la tercera versión de esta libreria.
 
 ## Autores
 
