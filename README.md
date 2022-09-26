@@ -34,11 +34,11 @@ en esta calculadora.
 * Pycharm (*editor de texto*)
 * Python 3.10 64-bit
 
-## Version 4
+## Version 5
 
-Actualmente (16/09/2022) es la tercera versión de esta libreria.
+Actualmente (25/09/2022) es la quinta versión de esta libreria.
 
-## Autores
+## Autor
 
 * **Juan Esteban Medina Rivas** - *Estudiante Ingeniería de Sistemas* 
 

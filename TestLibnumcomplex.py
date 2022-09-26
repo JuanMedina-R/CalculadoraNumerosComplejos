@@ -1,7 +1,6 @@
 import unittest
 import Libnumcomplex as lnc
 import math
-from fractions import Fraction
 
 
 class TestCplxOperations(unittest.TestCase):
