@@ -4,9 +4,6 @@ import math
 
 # n: número de posiciones, v: vector, p: posición p
 def probposicion(v, p):
-    sistema = [0 for i in range(len(v))]
-    n = len(v)
-    # print("longitud del vector: ", n)
     # nv: norma del vector
     nv = lb.normavector(v)
     rt = (lb.modulo2(v[p][0])) / (nv ** 2)
@@ -16,8 +13,9 @@ def probposicion(v, p):
 
 # a: vector 1, b: vector 2
 def probvector(a, b):
-    na = [1/lb.normavector(a), 0]
-    nb = [1/lb.normavector(b), 0]
+    na = [1 / lb.normavector(a), 0]
+    nb = [1 / lb.normavector(b), 0]
+    # A y B son los vectores a y b normalizados
     A = lb.multescalarvector(na, a)
     B = lb.multescalarvector(nb, b)
     rt = lb.productointerno(B, A)
@@ -61,10 +59,23 @@ def operadordelta(o, v):
 
 # o: observable, v: vector
 def varianza(o, v):
-    delta = operadordelta(o,v)
+    delta = operadordelta(o, v)
     d2 = lb.multmatrices(delta, delta)
     val = valoresperado(d2, v)
     return val
+
+
+# Para esta funcion, se tomará un sistema con 2 matrices unitarias, n,m y el vector de estado inicial v.
+def dinamica(n, m, v):
+    h = lb.matrizunitaria(n)
+    i = lb.matrizunitaria(m)
+    print(h, i)
+    # j = lb.matrizunitaria(l)
+    if h and i:
+        v1 = lb.multmatrices(n, v)
+        v2 = lb.multmatrices(m, v1)
+        # v3 = lb.multmatrices(l, v2)
+        return v2  # v2 es el estado final
 
 
 v = [
@@ -135,3 +146,18 @@ v2 = [
 # print(valoresperado(m, v2))
 # print(operadordelta(m, v2))
 # print(varianza(m, v2))
+
+m3 = [
+    [(0, 0), (1, 0)],
+    [(1, 0), (0, 0)]
+]
+m4 = [
+    [(math.sqrt(2) / 2, 0), (math.sqrt(2) / 2, 0)],
+    [(math.sqrt(2) / 2, 0), (-(math.sqrt(2) / 2), 0)]
+]
+v3 = [
+    [[1, 0]],
+    [[0, 0]]
+]
+# print(dinamica(m3, m4, v3))
+# print(lb.matrizunitaria(m4))

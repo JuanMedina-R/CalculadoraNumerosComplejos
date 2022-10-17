@@ -109,6 +109,22 @@ class TestCplxOperations(unittest.TestCase):
         ]
         self.assertEqual(cap4.varianza(m, v), (8.0, 0.0))
 
+    def test_dinamica(self):
+        m1 = [
+            [(0, 0), (1, 0)],
+            [(1, 0), (0, 0)]
+        ]
+        m2 = [
+            [(math.sqrt(2) / 2, 0), (math.sqrt(2) / 2, 0)],
+            [(math.sqrt(2) / 2, 0), (-(math.sqrt(2) / 2), 0)]
+        ]
+        v = [
+            [[1, 0]],
+            [[0, 0]]
+        ]
+        rt = [[(0.7071067811865476, 0.0)], [(-0.7071067811865476, 0.0)]]
+        self.assertEqual(cap4.dinamica(m1, m2, v), rt)
+
 
 if __name__ == '__main__':
     unittest.main()

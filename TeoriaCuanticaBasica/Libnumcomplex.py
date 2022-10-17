@@ -237,6 +237,10 @@ def distancia(a, b):
 def matrizunitaria(a):
     t = adjuntamatriz(a)
     u = multmatrices(t, a)
+    ur = [[0 for i in range(len(a[0]))] for j in range(len(a))]
+    for i in range(len(u)):
+        for j in range(len(u[0])):
+            ur[i][j] = (round(u[i][j][0]), round(u[i][j][1]))
     I = [[[0, 0] for i in range(len(a[0]))] for j in range(len(a))]
     for i in range(len(a)):
         for j in range(len(a[0])):
@@ -244,12 +248,12 @@ def matrizunitaria(a):
                 I[i][j] = (1, 0)
             else:
                 I[i][j] = (0, 0)
-    if I == u:
-        print("La matriz es unitaria")
-        return u
+    if I == ur:
+        # print("La matriz es unitaria")
+        return True
     else:
-        print("La matriz no es unitaria")
-        return u
+        # print("La matriz no es unitaria")
+        return False
 
 
 # Función MatrizHermitiaa: Comprueba si una matriz es hermitiana o no

@@ -4,9 +4,9 @@ El sistema consiste en una partícula confinada a un conjunto discreto de posici
 
 * Calcula la probabilidad de encontrarlo en una posición en particular.
 * Calcula la probabilidad de transitar del un primer vector a un segundo.
-*
-* Calcula la varianza del observable en el estado dado.
-* 
+* Calcula la amplitud de transición
+* Calcula el valor esperado, el operador delta y la varianza del observable en el estado dado.
+* A partir de la dinámica de un sistema calcula el estado final.
 
 ## Inicialmente
 
